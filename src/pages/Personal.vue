@@ -1,7 +1,7 @@
 <template>
   <div class="personal">
     <!-- 头部 -->
-    <div class="user">
+    <div class="user" @click="$router.push('/edit-info')">
       <!-- 头像 -->
       <img :src="userInfo.head_img | jointUrl" alt="我的头像" >
       <!-- 用户信息 -->

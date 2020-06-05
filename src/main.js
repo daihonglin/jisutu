@@ -20,10 +20,17 @@ import moment from 'moment'
 import JstInput from 'components/jst-input.vue'
 import JstButton from 'components/jst-button.vue'
 import JstNav from 'components/jst-nav.vue'
+import JstHeader from 'components/jst-header.vue'
 /* 插件 结束 */
+/* 全局组件 结束 */
 // vue 相关插件 use
 Vue.use(Vant)
-/* 全局组件 结束 */
+/* 注册全局组件 开始 */
+Vue.component('JstInput', JstInput)
+Vue.component('JstButton', JstButton)
+Vue.component('JstNav', JstNav)
+Vue.component('JstHeader', JstHeader)
+/* 注册全局组件 结束 */
 /* 设置axios 开始 */
 axios.defaults.baseURL = 'http://localhost:3000'
 // 添加请求拦截器
@@ -60,11 +67,6 @@ Vue.filter('handleTime', (value, params = 'YYYY-MM-DD') => {
   return moment(value).format(params)
 })
 /* 注册全局过滤器 结束 */
-/* 注册全局组件 开始 */
-Vue.component('JstInput', JstInput)
-Vue.component('JstButton', JstButton)
-Vue.component('JstNav', JstNav)
-/* 注册全局组件 结束 */
 /* 向Vue原型挂载方法 开始 */
 Vue.prototype.$axios = axios
 /* 向Vue原型挂载方法 结束 */

@@ -1,12 +1,13 @@
 <template>
   <!-- 导航 -->
-  <div class="jst-nav" @click="handleClick">
+  <div class="jst-nav" @click="handleClick" >
     <!-- 左侧 -->
-    <div class="nav-left">
-      <slot></slot>
-    </div>
+    <div class="nav-left"> <slot></slot> </div>
     <!-- 中间 -->
-    <div class="nav-center"> {{navCenter}} </div>
+    <div
+      class="nav-center"
+      :class="{'adjustment': navCenter === '******'}"
+    > {{navCenter}} </div>
     <!-- 右侧 -->
     <div class="nav-right">
       <i class="iconfont iconjiantou1"></i>
@@ -16,6 +17,11 @@
 
 <script>
 export default {
+  // 此时数据已准备好
+  created () {
+    if (this.navCenter === '******') {
+    }
+  },
   // props接收传值
   props: {
     navCenter: {
@@ -49,6 +55,10 @@ export default {
     text-align: right;
     font-size: 12px;
     color: #777;
+    &.adjustment {
+      position: relative;
+      top: 3px;
+    }
   }
   // 右侧
   .nav-right {

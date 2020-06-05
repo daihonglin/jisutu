@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Login from 'pages/Login.vue'
 import Register from 'pages/Register.vue'
 import Personal from 'pages/Personal.vue'
+import EditInfo from 'pages/EditInfo.vue'
 
 Vue.use(VueRouter)
 
@@ -11,7 +12,8 @@ const routes = [
   { path: '/', redirect: '/login' },
   { name: 'login', path: '/login', component: Login },
   { name: 'register', path: '/register', component: Register },
-  { name: 'personal', path: '/personal', component: Personal }
+  { name: 'personal', path: '/personal', component: Personal },
+  { name: 'editInfo', path: '/edit-info', component: EditInfo }
 ]
 
 const router = new VueRouter({
@@ -23,7 +25,6 @@ const authorizationPagesArr = ['personal']
 router.beforeEach((to, from, next) => {
   const res = authorizationPagesArr.findIndex(item => item === to.name)
   const token = localStorage.getItem('token')
-  console.log(res)
   // 如果访问的是授权页面, 且没有token 就跳转到登录页
   // 先经过路由导航守卫, 再经过axios请求
   if (res !== -1 && !token) {
