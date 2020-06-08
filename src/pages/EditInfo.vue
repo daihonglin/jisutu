@@ -4,7 +4,7 @@
     <jst-header>编辑资料</jst-header>
     <!-- 头像 -->
     <div class="img-wrap">
-      <img :src="userInfo.head_img | jointUrl" alt="点击更换头像" >
+      <img v-if="userInfo.head_img" :src="userInfo.head_img | jointUrl" alt="点击更换头像" >
       <van-uploader :after-read="afterRead" />
     </div>
     <!-- 导航 -->
@@ -296,14 +296,18 @@ export default {
 
 <style lang="scss">
 .van-dialog__content {
-  padding:  15px;
+  padding:  0 15px;
   .van-field {
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
   }
   .van-radio-group {
     display: flex;
     justify-content: space-around;
+    margin: 10px;
   }
 }
 .van-icon-eye-o {

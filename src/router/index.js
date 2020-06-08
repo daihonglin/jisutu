@@ -5,15 +5,30 @@ import Login from 'pages/Login.vue'
 import Register from 'pages/Register.vue'
 import Personal from 'pages/Personal.vue'
 import EditInfo from 'pages/EditInfo.vue'
+import Attention from 'pages/Attention.vue'
+import Comment from 'pages/Comment.vue'
+import Collect from 'pages/Collect.vue'
+import Home from 'pages/Home.vue'
+import TabManage from 'pages/TabManage.vue'
+import Search from 'pages/Search.vue'
 
+import Test from 'pages/Test.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', redirect: '/login' },
+  { path: '/', redirect: '/home' },
   { name: 'login', path: '/login', component: Login },
   { name: 'register', path: '/register', component: Register },
   { name: 'personal', path: '/personal', component: Personal },
-  { name: 'editInfo', path: '/edit-info', component: EditInfo }
+  { name: 'editInfo', path: '/edit-info', component: EditInfo },
+  { name: 'attention', path: '/attention', component: Attention },
+  { name: 'comment', path: '/comment', component: Comment },
+  { name: 'collect', path: '/collect', component: Collect },
+  { name: 'home', path: '/home', component: Home },
+  { name: 'tab-manage', path: '/tab-manage', component: TabManage },
+  { name: 'search', path: '/search', component: Search },
+
+  { name: 'test', path: '/test', component: Test }
 ]
 
 const router = new VueRouter({
@@ -29,7 +44,7 @@ router.beforeEach((to, from, next) => {
   // 先经过路由导航守卫, 再经过axios请求
   if (res !== -1 && !token) {
     Vue.prototype.$toast('请先登录再访问')
-    next('/login')
+    router.push('/login')
   } else {
     next()
   }

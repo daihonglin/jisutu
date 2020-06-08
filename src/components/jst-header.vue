@@ -9,12 +9,20 @@
       <slot></slot>
     </div>
     <!-- 右侧 -->
-    <div class="header-right"></div>
+    <div class="header-right" @click="rightClick">
+      <slot name="right"></slot>
+    </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    rightClick () {
+      this.$emit('click')
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -43,6 +51,10 @@ export default {}
   // 右侧
   .header-right {
     width: 60px;
+    text-align: center;
+    font-size: 18px;
+    height: 100%;
+    line-height: 59px;
   }
 }
 </style>
