@@ -125,6 +125,9 @@ export default {
         .iconxingbienan {
           color: skyblue;
         }
+        .iconxingbienv {
+          color: pink;
+        }
       }
 
       .time {

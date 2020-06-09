@@ -26,6 +26,8 @@ import JstUser from 'components/jst-user.vue'
 import JstComment from 'components/jst-comment.vue'
 import JstTop from 'components/jst-top.vue'
 import JstProduct from 'components/jst-product.vue'
+import JstExcellentComment from 'components/jst-excellent-comment.vue'
+import JstParent from 'components/jst-parent.vue'
 /* 全局组件 结束 */
 // vue 相关插件 use
 Vue.use(Vant)
@@ -38,6 +40,8 @@ Vue.component('JstUser', JstUser)
 Vue.component('JstComment', JstComment)
 Vue.component('JstTop', JstTop)
 Vue.component('JstProduct', JstProduct)
+Vue.component('JstExcellentComment', JstExcellentComment)
+Vue.component('JstParent', JstParent)
 /* 注册全局组件 结束 */
 /* 设置axios 开始 */
 axios.defaults.baseURL = 'http://localhost:3000'
@@ -80,6 +84,11 @@ Vue.filter('jointUrl', value => {
 // 处理时间的过滤器
 Vue.filter('handleTime', (value, params = 'YYYY-MM-DD') => {
   return moment(value).format(params)
+})
+// 处理时间的过滤器2
+moment.locale('zh-cn')
+Vue.filter('fromNow', value => {
+  return moment(value).fromNow()
 })
 /* 注册全局过滤器 结束 */
 /* 注册全局自定义指令 开始 */

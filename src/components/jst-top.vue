@@ -41,8 +41,8 @@ export default {
 .jst-top .gotop {
   text-align: center;
   position: fixed;
-  right: 50px;
-  bottom: 30px;
+  right: 20px;
+  bottom: 50px;
   cursor: pointer;
   padding: 10px;
   border-radius: 50%;

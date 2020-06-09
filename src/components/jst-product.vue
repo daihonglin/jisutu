@@ -1,5 +1,5 @@
 <template>
-  <div class="jst-product">
+  <div class="jst-product" @click="handleClick">
     <!-- 单图片 -->
     <div class="img-product">
       <div class="product-info">
@@ -28,6 +28,11 @@
 export default {
   props: {
     productInfo: Object
+  },
+  methods: {
+    handleClick () {
+      this.$emit('click')
+    }
   },
   computed: {
     // 评论条数处理

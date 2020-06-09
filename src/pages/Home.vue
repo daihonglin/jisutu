@@ -34,11 +34,14 @@
               v-for="item in tabList[index].productList"
               :key="item.id"
               :productInfo="item"
+              @click="$router.push(`/product-detail/${item.id}`)"
             ></jst-product>
           </van-list>
         </van-pull-refresh>
       </van-tab>
     </van-tabs>
+    <!-- 回到顶部 -->
+    <jst-top></jst-top>
   </div>
 </template>
 
@@ -59,9 +62,10 @@ export default {
   methods: {
     // 获取tab栏列表
     async getTabList () {
+      const token = localStorage.getItem('token')
       // 如果有数据就从本地获取数据, 并且加一些属性
       const activeTabList = JSON.parse(localStorage.getItem('activeTabList'))
-      if (activeTabList) {
+      if (activeTabList && token) {
         activeTabList.forEach(item => {
           item.productList = [] // 给每一项tab栏都添加一个数组用来存储该tab栏对应的商品列表, 防止服务器压力大
           item.loading = false // 给每一项都添加一个是否为加载中的装填

@@ -11,6 +11,7 @@ import Collect from 'pages/Collect.vue'
 import Home from 'pages/Home.vue'
 import TabManage from 'pages/TabManage.vue'
 import Search from 'pages/Search.vue'
+import ProductDetail from 'pages/ProductDetail.vue'
 
 import Test from 'pages/Test.vue'
 Vue.use(VueRouter)
@@ -25,8 +26,9 @@ const routes = [
   { name: 'comment', path: '/comment', component: Comment },
   { name: 'collect', path: '/collect', component: Collect },
   { name: 'home', path: '/home', component: Home },
-  { name: 'tab-manage', path: '/tab-manage', component: TabManage },
+  { name: 'tabManage', path: '/tab-manage', component: TabManage },
   { name: 'search', path: '/search', component: Search },
+  { name: 'productDetail', path: '/product-detail/:id', component: ProductDetail },
 
   { name: 'test', path: '/test', component: Test }
 ]
@@ -35,7 +37,7 @@ const router = new VueRouter({
   routes
 })
 // 需要授权访问的页面数组
-const authorizationPagesArr = ['personal']
+const authorizationPagesArr = ['personal', 'editInfo', 'attention', 'comment', 'collect', 'tabManage']
 // 全局路由导航守卫, 在每次路由跳转之前都会执行
 router.beforeEach((to, from, next) => {
   const res = authorizationPagesArr.findIndex(item => item === to.name)
